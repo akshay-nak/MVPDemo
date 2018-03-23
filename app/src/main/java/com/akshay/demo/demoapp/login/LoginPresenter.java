@@ -1,5 +1,6 @@
 package com.akshay.demo.demoapp.login;
 
+import com.akshay.demo.demoapp.data.IDatabaseManager;
 import com.akshay.demo.demoapp.data.PreferenceManager;
 import com.akshay.demo.demoapp.base.BasePresenter;
 
@@ -8,8 +9,8 @@ import com.akshay.demo.demoapp.base.BasePresenter;
  */
 
 public class LoginPresenter<V extends ILoginView> extends BasePresenter<V> implements ILoginPresenter<V> {
-    public LoginPresenter(PreferenceManager preferenceManager) {
-        super(preferenceManager);
+    public LoginPresenter(PreferenceManager preferenceManager, IDatabaseManager databaseManager) {
+        super(preferenceManager,databaseManager);
     }
 
     @Override

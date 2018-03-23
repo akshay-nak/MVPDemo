@@ -1,5 +1,6 @@
 package com.akshay.demo.demoapp.home;
 
+import com.akshay.demo.demoapp.data.IDatabaseManager;
 import com.akshay.demo.demoapp.data.PreferenceManager;
 import com.akshay.demo.demoapp.base.BasePresenter;
 
@@ -8,8 +9,8 @@ import com.akshay.demo.demoapp.base.BasePresenter;
  */
 
 public class MainPresenter<V extends IMainView> extends BasePresenter<V> implements IMainPresenter<V> {
-    public MainPresenter(PreferenceManager preferenceManager) {
-        super(preferenceManager);
+    public MainPresenter(PreferenceManager preferenceManager, IDatabaseManager databaseManager) {
+        super(preferenceManager,databaseManager);
     }
 
     @Override

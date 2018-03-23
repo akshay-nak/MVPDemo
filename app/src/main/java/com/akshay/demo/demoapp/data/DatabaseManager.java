@@ -4,10 +4,23 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.akshay.demo.demoapp.login.model.UserInfo;
+
 /**
  * Created by akshay on 23/3/18.
  */
-public class DatabaseManager {
+public class DatabaseManager implements IDatabaseManager {
+    Context context;
+
+    public DatabaseManager(Context context) {
+        this.context = context;
+    }
+
+    @Override
+    public void saveUserProfile(UserInfo userInfo) {
+
+    }
+
     static class DatabaseHelper extends SQLiteOpenHelper {
 
         static final String DB_NAME = "MY_DATABASE";

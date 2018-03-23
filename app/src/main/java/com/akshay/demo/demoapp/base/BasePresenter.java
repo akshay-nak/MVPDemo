@@ -1,5 +1,6 @@
 package com.akshay.demo.demoapp.base;
 
+import com.akshay.demo.demoapp.data.IDatabaseManager;
 import com.akshay.demo.demoapp.data.PreferenceManager;
 
 /**
@@ -9,10 +10,12 @@ import com.akshay.demo.demoapp.data.PreferenceManager;
 public class BasePresenter<V extends IBaseView> implements IBasePresenter<V> {
 
     PreferenceManager preferenceManager;
+    IDatabaseManager databaseManager;
     private V mMVIPView;
 
-    public BasePresenter(PreferenceManager preferenceManager) {
+    public BasePresenter(PreferenceManager preferenceManager, IDatabaseManager databaseManager) {
         this.preferenceManager = preferenceManager;
+        this.databaseManager = databaseManager;
     }
 
     @Override
@@ -26,5 +29,9 @@ public class BasePresenter<V extends IBaseView> implements IBasePresenter<V> {
 
     public PreferenceManager getPreferenceManager() {
         return preferenceManager;
+    }
+
+    public IDatabaseManager getDatabaseManager() {
+        return databaseManager;
     }
 }

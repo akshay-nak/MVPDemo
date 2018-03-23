@@ -2,6 +2,8 @@ package com.akshay.demo.demoapp.common;
 
 import android.app.Application;
 
+import com.akshay.demo.demoapp.data.DatabaseManager;
+import com.akshay.demo.demoapp.data.IDatabaseManager;
 import com.akshay.demo.demoapp.data.PreferenceManager;
 import com.akshay.demo.demoapp.data.SharedPreferenceHelper;
 
@@ -10,17 +12,24 @@ import com.akshay.demo.demoapp.data.SharedPreferenceHelper;
  */
 
 public class AppApplication extends Application {
-    PreferenceManager preferenceManager;
+    PreferenceManager mPreferenceManager;
+    IDatabaseManager databaseManager;
 
     @Override
     public void onCreate() {
         super.onCreate();
 
         SharedPreferenceHelper sharedPrefsHelper = new SharedPreferenceHelper(getApplicationContext());
-        preferenceManager = new PreferenceManager(sharedPrefsHelper);
+        mPreferenceManager = new PreferenceManager(sharedPrefsHelper);
+
+        databaseManager = new DatabaseManager(getApplicationContext());
     }
 
     public PreferenceManager getPreferenceManager() {
-        return preferenceManager;
+        return mPreferenceManager;
+    }
+
+    public IDatabaseManager getDatabaseManager() {
+        return databaseManager;
     }
 }

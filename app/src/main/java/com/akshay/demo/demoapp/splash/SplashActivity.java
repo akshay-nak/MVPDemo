@@ -4,16 +4,22 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.akshay.demo.demoapp.common.AppApplication;
 import com.akshay.demo.demoapp.R;
-import com.akshay.demo.demoapp.data.PreferenceManager;
 import com.akshay.demo.demoapp.base.BaseActivity;
-import com.akshay.demo.demoapp.login.LoginActivity;
+import com.akshay.demo.demoapp.common.AppApplication;
+import com.akshay.demo.demoapp.data.IDatabaseManager;
+import com.akshay.demo.demoapp.data.PreferenceManager;
 import com.akshay.demo.demoapp.home.MainActivity;
+import com.akshay.demo.demoapp.login.LoginActivity;
 
 public class SplashActivity extends BaseActivity implements ISplashView {
 
     SplashPresenter mSplashPresenter;
+
+    public static Intent getStartIntent(Context context) {
+        Intent intent = new Intent(context, SplashActivity.class);
+        return intent;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +27,9 @@ public class SplashActivity extends BaseActivity implements ISplashView {
 
         setContentView(R.layout.activity_splash);
         PreferenceManager preferenceManager = ((AppApplication) getApplication()).getPreferenceManager();
+        IDatabaseManager databaseManager = ((AppApplication) getApplication()).getDatabaseManager();
 
-        mSplashPresenter = new SplashPresenter(preferenceManager);
+        mSplashPresenter = new SplashPresenter(preferenceManager, databaseManager);
 
         mSplashPresenter.onAttach(this);
 
@@ -41,11 +48,6 @@ public class SplashActivity extends BaseActivity implements ISplashView {
         Intent intent = MainActivity.getStartIntent(this);
         startActivity(intent);
         finish();
-    }
-
-    public static Intent getStartIntent(Context context) {
-        Intent intent = new Intent(context, SplashActivity.class);
-        return intent;
     }
 
 }

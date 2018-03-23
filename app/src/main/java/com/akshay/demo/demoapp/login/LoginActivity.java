@@ -2,7 +2,6 @@ package com.akshay.demo.demoapp.login;
 
 import android.content.Context;
 import android.content.Intent;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
@@ -11,10 +10,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.akshay.demo.demoapp.R;
-import com.akshay.demo.demoapp.common.CommonUtils;
-import com.akshay.demo.demoapp.common.AppApplication;
-import com.akshay.demo.demoapp.data.PreferenceManager;
 import com.akshay.demo.demoapp.base.BaseActivity;
+import com.akshay.demo.demoapp.common.AppApplication;
+import com.akshay.demo.demoapp.common.CommonUtils;
+import com.akshay.demo.demoapp.data.IDatabaseManager;
+import com.akshay.demo.demoapp.data.PreferenceManager;
 import com.akshay.demo.demoapp.home.MainActivity;
 
 /**
@@ -22,10 +22,15 @@ import com.akshay.demo.demoapp.home.MainActivity;
  */
 public class LoginActivity extends BaseActivity implements ILoginView {
 
+    LoginPresenter loginPresenter;
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
 
-    LoginPresenter loginPresenter;
+    public static Intent getStartIntent(Context context) {
+        Intent intent = new Intent(context, LoginActivity.class);
+        return intent;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,11 +39,12 @@ public class LoginActivity extends BaseActivity implements ILoginView {
         mPasswordView = (EditText) findViewById(R.id.password);
 
         PreferenceManager preferenceManager = ((AppApplication) getApplication()).getPreferenceManager();
-        loginPresenter = new LoginPresenter(preferenceManager);
+        IDatabaseManager databaseManager = ((AppApplication) getApplication()).getDatabaseManager();
+        loginPresenter = new LoginPresenter(preferenceManager, databaseManager);
 
         loginPresenter.onAttach(this);
 
-       Button button = (Button) findViewById(R.id.button);
+        Button button = (Button) findViewById(R.id.button);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,11 +77,6 @@ public class LoginActivity extends BaseActivity implements ILoginView {
         }
 
         loginPresenter.startLogin(emailId);
-    }
-
-    public static Intent getStartIntent(Context context) {
-        Intent intent = new Intent(context, LoginActivity.class);
-        return intent;
     }
 }
 
