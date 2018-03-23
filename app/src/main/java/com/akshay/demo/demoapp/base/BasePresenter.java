@@ -1,6 +1,6 @@
 package com.akshay.demo.demoapp.base;
 
-import com.akshay.demo.demoapp.data.DataManager;
+import com.akshay.demo.demoapp.data.PreferenceManager;
 
 /**
  * Created by akshay on 27/1/18.
@@ -8,11 +8,11 @@ import com.akshay.demo.demoapp.data.DataManager;
 
 public class BasePresenter<V extends IBaseView> implements IBasePresenter<V> {
 
-    DataManager dataManager;
+    PreferenceManager preferenceManager;
     private V mMVIPView;
 
-    public BasePresenter(DataManager dataManager) {
-        this.dataManager = dataManager;
+    public BasePresenter(PreferenceManager preferenceManager) {
+        this.preferenceManager = preferenceManager;
     }
 
     @Override
@@ -24,7 +24,7 @@ public class BasePresenter<V extends IBaseView> implements IBasePresenter<V> {
         return mMVIPView;
     }
 
-    public DataManager getDataManager() {
-        return dataManager;
+    public PreferenceManager getPreferenceManager() {
+        return preferenceManager;
     }
 }

@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.akshay.demo.demoapp.R;
 import com.akshay.demo.demoapp.common.AppApplication;
-import com.akshay.demo.demoapp.data.DataManager;
+import com.akshay.demo.demoapp.data.PreferenceManager;
 import com.akshay.demo.demoapp.splash.SplashActivity;
 import com.akshay.demo.demoapp.base.BaseActivity;
 
@@ -30,8 +30,8 @@ public class MainActivity extends BaseActivity implements IMainView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        DataManager dataManager = ((AppApplication) getApplication()).getDataManager();
-        mainPresenter = new MainPresenter(dataManager);
+        PreferenceManager preferenceManager = ((AppApplication) getApplication()).getPreferenceManager();
+        mainPresenter = new MainPresenter(preferenceManager);
         mainPresenter.onAttach(this);
 
         textViewShow = (TextView) findViewById(R.id.textViewShow);

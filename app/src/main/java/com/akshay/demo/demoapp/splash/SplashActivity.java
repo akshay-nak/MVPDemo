@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import com.akshay.demo.demoapp.common.AppApplication;
 import com.akshay.demo.demoapp.R;
-import com.akshay.demo.demoapp.data.DataManager;
+import com.akshay.demo.demoapp.data.PreferenceManager;
 import com.akshay.demo.demoapp.base.BaseActivity;
 import com.akshay.demo.demoapp.login.LoginActivity;
 import com.akshay.demo.demoapp.home.MainActivity;
@@ -20,9 +20,9 @@ public class SplashActivity extends BaseActivity implements ISplashView {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_splash);
-        DataManager dataManager = ((AppApplication) getApplication()).getDataManager();
+        PreferenceManager preferenceManager = ((AppApplication) getApplication()).getPreferenceManager();
 
-        mSplashPresenter = new SplashPresenter(dataManager);
+        mSplashPresenter = new SplashPresenter(preferenceManager);
 
         mSplashPresenter.onAttach(this);
 

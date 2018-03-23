@@ -4,10 +4,10 @@ package com.akshay.demo.demoapp.data;
  * Created by akshay on 27/1/18.
  */
 
-public class DataManager {
+public class PreferenceManager {
     SharedPreferenceHelper mSharedPrefsHelper;
 
-    public DataManager(SharedPreferenceHelper sharedPrefsHelper) {
+    public PreferenceManager(SharedPreferenceHelper sharedPrefsHelper) {
         mSharedPrefsHelper = sharedPrefsHelper;
     }
 

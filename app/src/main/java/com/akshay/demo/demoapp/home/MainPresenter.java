@@ -1,6 +1,6 @@
 package com.akshay.demo.demoapp.home;
 
-import com.akshay.demo.demoapp.data.DataManager;
+import com.akshay.demo.demoapp.data.PreferenceManager;
 import com.akshay.demo.demoapp.base.BasePresenter;
 
 /**
@@ -8,18 +8,18 @@ import com.akshay.demo.demoapp.base.BasePresenter;
  */
 
 public class MainPresenter<V extends IMainView> extends BasePresenter<V> implements IMainPresenter<V> {
-    public MainPresenter(DataManager dataManager) {
-        super(dataManager);
+    public MainPresenter(PreferenceManager preferenceManager) {
+        super(preferenceManager);
     }
 
     @Override
     public String getEmailId() {
-        return getDataManager().getEmailId();
+        return getPreferenceManager().getEmailId();
     }
 
     @Override
     public void setUserLoggedOut() {
-        getDataManager().clear();
+        getPreferenceManager().clear();
         getBaseView().openSplashActivity();
     }
 }

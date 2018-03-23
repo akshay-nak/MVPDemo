@@ -13,7 +13,7 @@ import android.widget.Toast;
 import com.akshay.demo.demoapp.R;
 import com.akshay.demo.demoapp.common.CommonUtils;
 import com.akshay.demo.demoapp.common.AppApplication;
-import com.akshay.demo.demoapp.data.DataManager;
+import com.akshay.demo.demoapp.data.PreferenceManager;
 import com.akshay.demo.demoapp.base.BaseActivity;
 import com.akshay.demo.demoapp.home.MainActivity;
 
@@ -33,8 +33,8 @@ public class LoginActivity extends BaseActivity implements ILoginView {
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         mPasswordView = (EditText) findViewById(R.id.password);
 
-        DataManager dataManager = ((AppApplication) getApplication()).getDataManager();
-        loginPresenter = new LoginPresenter(dataManager);
+        PreferenceManager preferenceManager = ((AppApplication) getApplication()).getPreferenceManager();
+        loginPresenter = new LoginPresenter(preferenceManager);
 
         loginPresenter.onAttach(this);
 

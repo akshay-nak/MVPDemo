@@ -1,6 +1,6 @@
 package com.akshay.demo.demoapp.splash;
 
-import com.akshay.demo.demoapp.data.DataManager;
+import com.akshay.demo.demoapp.data.PreferenceManager;
 import com.akshay.demo.demoapp.base.BasePresenter;
 import android.os.Handler;
 
@@ -10,8 +10,8 @@ import android.os.Handler;
  */
 
 public class SplashPresenter<V extends ISplashView> extends BasePresenter<V> implements ISplashPresenter<V> {
-        public SplashPresenter(DataManager dataManager) {
-        super(dataManager);
+        public SplashPresenter(PreferenceManager preferenceManager) {
+        super(preferenceManager);
     }
 
     @Override
@@ -23,7 +23,7 @@ public class SplashPresenter<V extends ISplashView> extends BasePresenter<V> imp
             @Override
             public void run() {
 
-                if (getDataManager().getLoggedInMode()) {
+                if (getPreferenceManager().getLoggedInMode()) {
                     getBaseView().openHomeActivity();
                 } else {
                     getBaseView().openLoginActivity();
