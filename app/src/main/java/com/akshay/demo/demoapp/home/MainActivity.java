@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.akshay.demo.demoapp.R;
 import com.akshay.demo.demoapp.common.AppApplication;
-import com.akshay.demo.demoapp.models.DataManager;
+import com.akshay.demo.demoapp.data.DataManager;
 import com.akshay.demo.demoapp.splash.SplashActivity;
 import com.akshay.demo.demoapp.base.BaseActivity;
 

@@ -2,8 +2,8 @@ package com.akshay.demo.demoapp.common;
 
 import android.app.Application;
 
-import com.akshay.demo.demoapp.models.DataManager;
-import com.akshay.demo.demoapp.models.SharedPreferenceHelper;
+import com.akshay.demo.demoapp.data.DataManager;
+import com.akshay.demo.demoapp.data.SharedPreferenceHelper;
 
 /**
  * Created by akshay on 27/1/18.

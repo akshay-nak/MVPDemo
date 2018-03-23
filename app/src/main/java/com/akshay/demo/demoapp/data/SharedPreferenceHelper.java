@@ -1,4 +1,4 @@
-package com.akshay.demo.demoapp.models;
+package com.akshay.demo.demoapp.data;
 
 import android.content.Context;
 import android.content.SharedPreferences;

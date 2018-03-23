@@ -13,7 +13,7 @@ import android.widget.Toast;
 import com.akshay.demo.demoapp.R;
 import com.akshay.demo.demoapp.common.CommonUtils;
 import com.akshay.demo.demoapp.common.AppApplication;
-import com.akshay.demo.demoapp.models.DataManager;
+import com.akshay.demo.demoapp.data.DataManager;
 import com.akshay.demo.demoapp.base.BaseActivity;
 import com.akshay.demo.demoapp.home.MainActivity;
 

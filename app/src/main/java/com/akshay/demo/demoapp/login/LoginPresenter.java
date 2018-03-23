@@ -1,6 +1,6 @@
 package com.akshay.demo.demoapp.login;
 
-import com.akshay.demo.demoapp.models.DataManager;
+import com.akshay.demo.demoapp.data.DataManager;
 import com.akshay.demo.demoapp.base.BasePresenter;
 
 /**

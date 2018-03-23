@@ -1,6 +1,6 @@
 package com.akshay.demo.demoapp.base;
 
-import com.akshay.demo.demoapp.models.DataManager;
+import com.akshay.demo.demoapp.data.DataManager;
 
 /**
  * Created by akshay on 27/1/18.

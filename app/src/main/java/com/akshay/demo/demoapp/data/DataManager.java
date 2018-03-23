@@ -1,4 +1,4 @@
-package com.akshay.demo.demoapp.models;
+package com.akshay.demo.demoapp.data;
 
 /**
  * Created by akshay on 27/1/18.
