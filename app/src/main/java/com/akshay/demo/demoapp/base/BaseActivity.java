@@ -18,9 +18,7 @@ public class BaseActivity extends AppCompatActivity implements IBaseView {
 
     @Override
     public void showProgress() {
-
         progressDialog = ProgressDialog.show(this, "Loading...", "Please wait....");
-
     }
 
     @Override
