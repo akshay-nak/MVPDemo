@@ -9,4 +9,8 @@ import com.akshay.demo.demoapp.login.model.UserInfo;
 public interface IDatabaseManager {
 
     void saveUserProfile(UserInfo userInfo);
+
+    UserInfo getUserInfo();
+
+    void clear();
 }

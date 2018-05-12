@@ -1,10 +1,15 @@
 package com.akshay.demo.demoapp.data;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.akshay.demo.demoapp.login.model.UserInfo;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by akshay on 23/3/18.
@@ -18,8 +23,39 @@ public class DatabaseManager implements IDatabaseManager {
 
     @Override
     public void saveUserProfile(UserInfo userInfo) {
-
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("full_name", userInfo.getFull_name());
+        DatabaseHelper databaseHelper = DatabaseHelper.getDatabaseInstance(context);
+        databaseHelper.getWritableDatabase().insert("user_info", null, contentValues);
+        databaseHelper.close();
     }
+
+    @Override
+    public UserInfo getUserInfo() {
+        UserInfo user = null;
+        DatabaseHelper databaseHelper = DatabaseHelper.getDatabaseInstance(context);
+        Cursor cursor = databaseHelper.getWritableDatabase().rawQuery("Select * from user_info", null);
+        if (cursor != null) {
+            if (cursor.moveToNext()) {
+                user = new UserInfo(cursor.getString(cursor.getColumnIndex("full_name")));
+                user.setId(cursor.getInt(0));
+            }
+
+        }
+        if (cursor != null) {
+            cursor.close();
+        }
+        if (databaseHelper != null) {
+            databaseHelper.close();
+        }
+        return user;
+    }
+
+    @Override
+    public void clear() {
+        DatabaseHelper.getDatabaseInstance(context).clearDatabase();
+    }
+
 
     static class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -41,12 +77,38 @@ public class DatabaseManager implements IDatabaseManager {
 
         @Override
         public void onCreate(SQLiteDatabase db) {
-
+            db.execSQL("Create table user_info (_id integer primary key autoincrement, full_name text)");
         }
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
         }
+
+        public void clearDatabase() {
+            // query to obtain the names of all tables in your database
+            SQLiteDatabase db = getWritableDatabase();
+            Cursor c = db.rawQuery("SELECT name FROM sqlite_master WHERE type='table'", null);
+            List<String> tables = new ArrayList<>();
+
+            // iterate over the result set, adding every table name to a list
+            while (c.moveToNext()) {
+                tables.add(c.getString(0));
+            }
+
+            // call DROP TABLE on every table name
+            for (String table : tables) {
+                if (!table.equals("sqlite_sequence")) {
+                    String deleteQuery = "DELETE from " + table;
+                    db.execSQL(deleteQuery);
+                }
+            }
+            if (c != null)
+                c.close();
+
+            if (db != null)
+                db.close();
+        }
+
     }
 }

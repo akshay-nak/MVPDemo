@@ -33,7 +33,7 @@ public class SplashPresenter<V extends ISplashView> extends BasePresenter<V> imp
 
                 getBaseView().hideProgress();
             }
-        }, 3000);
+        }, 1000);
 
     }
 }

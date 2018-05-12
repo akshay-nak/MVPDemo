@@ -12,12 +12,14 @@ import com.akshay.demo.demoapp.base.BaseActivity;
 import com.akshay.demo.demoapp.common.AppApplication;
 import com.akshay.demo.demoapp.data.IDatabaseManager;
 import com.akshay.demo.demoapp.data.PreferenceManager;
+import com.akshay.demo.demoapp.login.model.UserInfo;
 import com.akshay.demo.demoapp.splash.SplashActivity;
 
 public class MainActivity extends BaseActivity implements IMainView {
 
     static final String TAG = MainActivity.class.getName();
     TextView textViewShow;
+    TextView textViewUser;
     Button buttonLogout;
     MainPresenter mainPresenter;
 
@@ -37,11 +39,13 @@ public class MainActivity extends BaseActivity implements IMainView {
         mainPresenter.onAttach(this);
 
         textViewShow = (TextView) findViewById(R.id.textViewShow);
-
+        textViewUser = (TextView) findViewById(R.id.textViewUser);
         buttonLogout = (Button) findViewById(R.id.buttonLogout);
 
         textViewShow.setText(mainPresenter.getEmailId());
 
+        UserInfo user = mainPresenter.getUser();
+        textViewUser.setText(user != null ? user.getFull_name() : "Not found");
 
         buttonLogout.setOnClickListener(new View.OnClickListener() {
             @Override
